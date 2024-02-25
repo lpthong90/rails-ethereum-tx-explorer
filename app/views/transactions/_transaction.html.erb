@@ -1,0 +1,5 @@
+<div class="transaction">
+  <p> Transaction Hash: <%= @transaction.hash %> </p>
+  <p> Transaction From: <%= link_to @transaction.from, show_address_path(@transaction.from) %> </p>
+  <p> Transaction To: <%= link_to @transaction.to, show_address_path(@transaction.to) %> </p>
+</div>
