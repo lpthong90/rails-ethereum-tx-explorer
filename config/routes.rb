@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  get 'addresses/:address', to: 'addresses#show', as: "show_address"
+  root "home#index"
+
+  get 'home/index', to: "home#index", as: "home"
+
+  get 'blocks', to: "blocks#index", as: "blocks"
+  get 'block/:hash', to: "blocks#show", as: "show_block"
 
   get 'txs', to: 'transactions#index', as: "txs"
-  get 'txs/:tx_hash', to: 'transactions#show', as: "show_tx"
+  get 'tx/:hash', to: 'transactions#show', as: "show_tx"
+
+  get 'address/:address', to: 'addresses#show', as: "show_address"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

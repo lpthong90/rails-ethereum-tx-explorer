@@ -9,7 +9,7 @@ class Address
   validates_format_of :address, with: /0x[a-fA-F0-9]{40}/
 
   def balance=(value)
-    @balance = value.to_i(16)
+    @balance = value.to_i(16) rescue 0
   end
 
   def eth_balance

@@ -1,4 +1,4 @@
-<li class="transaction py-3 sm:py-4">
+<li class="block py-3 sm:py-4">
   <div class="flex items-center justify-between">
     <div class="flex items-center min-w-0">
       <%# <img class="flex-shrink-0 w-10 h-10" src="https://flowbite-admin-dashboard.vercel.app/images/products/iphone.png" alt="imac image"> %>
@@ -7,7 +7,7 @@
       </svg>
       <div class="ml-3">
         <p class="font-medium text-gray-900 truncate dark:text-white">
-          <%= link_to transaction.hash[..10] + "...", show_tx_path(hash: transaction.hash) %>
+          <%= link_to block.hash[..10] + "...", show_block_path(hash: block.hash) %>
         </p>
         <div class="flex items-center flex-1 text-sm text-gray-400">
           9 secs ago

@@ -1,0 +1,9 @@
+<div>
+  <%# <h1 class="font-bold text-4xl">Blocks#show</h1> %>
+  <% if @block %>
+    <h1 class="font-bold text-4xl">Block</h1>
+    <%= render @block %>
+  <% else %>
+    <h1 class="font-bold text-4xl">Block: Not found</h1>
+  <% end %>
+</div>

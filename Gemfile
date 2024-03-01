@@ -69,9 +69,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "eventmachine", "~> 1.2"
-
-gem "faye-websocket", "~> 0.11.3"
-
-
 gem "httparty", "~> 0.21.0"
+gem "websocket-client-simple", "~> 0.8.0"
+
+gem "figaro", "~> 1.2"

@@ -1,5 +1,5 @@
-require 'web3/alchemy'
+require 'alchemy/rpc_client'
 
 Rails.application.configure do
-  config.alchemy = Web3::Alchemy
+  config.alchemy = Alchemy::RpcClient
 end
