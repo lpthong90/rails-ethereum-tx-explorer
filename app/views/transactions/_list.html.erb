@@ -1,0 +1,7 @@
+<table id="transactions" class="min-w-full">
+  <tbody class="bg-white dark:bg-gray-800">
+    <% transactions.each do |transaction| %>
+      <%= render partial: "transactions/list/row", locals: { transaction: transaction } %>
+    <% end %>
+  </tbody>
+</table>

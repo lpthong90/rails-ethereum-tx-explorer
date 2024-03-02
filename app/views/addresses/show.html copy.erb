@@ -1,0 +1,17 @@
+<div>
+  <% if @address %>
+
+    <%= render @address %>
+    <% if @transactions %>
+      <div id="transactions">
+        <% @transactions.each do |transaction| %>
+          <% render transaction%>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Transactions Not Found</p>
+    <% end %>
+  <% else %>
+    <p>Address Not Found</p>
+  <% end %>
+</div>

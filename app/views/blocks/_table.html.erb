@@ -1,0 +1,5 @@
+<tbody id="blocks" class="bg-white dark:bg-gray-800">
+  <% blocks.each do |block| %>
+    <%= render partial: "blocks/table/row", locals: { block: block } %>
+  <% end %>
+</tbody>

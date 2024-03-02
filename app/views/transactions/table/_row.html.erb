@@ -1,0 +1,20 @@
+<tr>
+  <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+    <%= link_to right_hash(transaction.hash) + '...', show_tx_path(transaction.hash) %>
+  </td>
+  <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+    <%= link_to transaction.blockNumber, show_block_path(block_id: transaction.blockNumber) %>
+  </td>
+  <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+    <%= link_to left_right_hash(transaction.from), show_address_path(transaction.from) %>
+  </td>
+  <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+    <%= link_to left_right_hash(transaction.to), show_address_path(transaction.to) %>
+  </td>
+  <td class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+    <%= transaction.eth_value %> ETH
+  </td>
+  <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+    <%= transaction.eth_fee.round(6) %> ETH
+  </td>
+</tr>

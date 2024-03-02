@@ -1,9 +1,36 @@
-<div>
-  <h1 class="font-bold text-4xl">Transactions#index</h1>
-  <%= turbo_stream_from "transactions" %>
-  <div id="transactions">
-    <% @transactions.each do |transaction| %>
-      <% render transaction %>
-    <% end %>
+<section class="block bg-white dark:bg-gray-900">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6 lg:px-6">
+      <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <h3 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">Transactions</h3>
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+          <thead class="bg-gray-50 dark:bg-gray-700">
+            <tr>
+              <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                Txn Hash	
+              </th>
+              <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                Block
+              </th>
+              <%# <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                Age
+              </th> %>
+              <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                From
+              </th>
+              <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                To
+              </th>
+              <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                Value
+              </th>
+              <th scope="col" class="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white">
+                Tx Fee
+              </th>
+            </tr>
+          </thead>
+          <%= turbo_stream_from "transactions", channel: TransactionChannel, class: "sr-only" %>
+          <%= render partial: "transactions/table", locals: { transactions: @transactions } %>
+        </table>
+      </div>
   </div>
-</div>
+</section>

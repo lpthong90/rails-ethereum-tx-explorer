@@ -1,5 +1,13 @@
-<div class="address">
-  <p> Address: <%= @address.address %> </p>
-  <p> Balance in ETH: <%= @address.eth_balance %> ETH </p>
-  <p> Balance in Wei: <%= @address.wei_balance %> Wei </p>
-</div>
+<table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+  <tbody class="bg-white dark:bg-gray-800">
+    <tr>
+      <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+        Eth Balance
+      </td>
+      <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+        <%= address.eth_balance %> ETH
+      </td>
+    </tr>
+  </tbody>
+</table>
+

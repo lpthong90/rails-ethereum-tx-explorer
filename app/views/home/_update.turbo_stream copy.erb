@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "blocks" do %>
+  <%= render partial: "blocks/list", locals: { blocks: blocks } %>
+<% end %>
+
+<%= turbo_stream.replace "transactions" do %>
+  <%= render partial: "transactions/list", locals: { transactions: transactions } %>
+<% end %>
+
+<%= render partial: "transactions/list/replace", locals: { transactions: transactions } %>

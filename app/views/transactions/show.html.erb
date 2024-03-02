@@ -1,8 +1,14 @@
-<div>
-  <% if @transaction %>
-    <h1 class="font-bold text-4xl">Transaction</h1>
-    <%= render @transaction %>
-  <% else %>
-    <h1 class="font-bold text-4xl">Transaction: Not found</h1>
-  <% end %>
-</div>
+<section class="transaction bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <% if @transaction %>
+          <h3 class="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">
+            Transaction #<span class="font-extrabold"><%= @transaction.hash %></span>
+          </h3>
+          <%= render @transaction %>
+        <% else %>
+          <h3 class="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">Transaction: Not Found</h3>
+        <% end %>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+<tbody id="transactions" class="bg-white dark:bg-gray-800">
+  <% transactions.each do |transaction| %>
+    <%= render partial: "transactions/table/row", locals: { transaction: transaction } %>
+  <% end %>
+</tbody>

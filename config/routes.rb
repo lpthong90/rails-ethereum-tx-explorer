@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'home/index', to: "home#index", as: "home"
 
   get 'blocks', to: "blocks#index", as: "blocks"
-  get 'block/:hash', to: "blocks#show", as: "show_block"
+  get 'block/:block_id', to: "blocks#show", as: "show_block"
 
   get 'txs', to: 'transactions#index', as: "txs"
   get 'tx/:hash', to: 'transactions#show', as: "show_tx"

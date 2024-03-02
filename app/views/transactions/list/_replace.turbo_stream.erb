@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "transactions" do %>
+  <%= render partial: "transactions/list", locals: { transactions: transactions } %>
+<% end %>

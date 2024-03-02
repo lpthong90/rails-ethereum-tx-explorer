@@ -1,6 +1,7 @@
 class BlocksController < ApplicationController
   before_action :load_blocks, only: [:index]
   before_action :load_block, only: [:show]
+  before_action :load_transactions, only: [:show]
 
   def index
   end
@@ -10,15 +11,25 @@ class BlocksController < ApplicationController
 
   private
     def load_blocks
-      @blocks = EventCache.fetch_list("blocks")
+      @blocks = EventCache.fetch_blocks(from: 0, to: 10)
     end
 
     def load_block
       @block = begin
-        data = web3.get_block_by_hash(params[:hash])
-        Block.new.from_json(data.to_json)
-      rescue
-        nil
+        data = if params[:block_id].size == 66  # size of block's hash
+          web3.get_block_by_hash(params[:block_id], include_txs: true)
+        else 
+          web3.get_block_by_number(params[:block_id].to_i, include_txs: true)
+        end
+        Block.from_json(data)
+      # rescue
+      #   nil
       end
+    end
+
+    def load_transactions
+      @transactions = @block.transactions.map { Transaction.from_json(_1) }
+    rescue
+      @transactions = []
     end
 end

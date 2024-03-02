@@ -1,0 +1,17 @@
+<tr>
+  <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+    <%= block.number %>
+  </td>
+  <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+    <%= block.seconds_ago %> seconds ago
+  </td>
+  <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+    <%= block.size %> bytes
+  </td>
+  <td class="inline-flex items-center p-4 space-x-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+    <%= left_right_hash(block.miner) %>
+  </td>
+  <td class="p-4 whitespace-nowrap">
+    <%= block.gwei_baseFeePerGas.round(2) %>
+  </td>
+</tr>

@@ -26,11 +26,11 @@ module Alchemy
       nil
     end
 
-    def self.get_block_by_number(number)
-      body_data = build_data('eth_getBlockByNumber', ["0x#{number.to_s(16)}"])
+    def self.get_block_by_number(number, include_txs: false)
+      body_data = build_data('eth_getBlockByNumber', ["0x#{number.to_s(16)}", include_txs])
       post('/', body: body_data.to_json)['result']
-    rescue StandardError
-      nil
+    # rescue StandardError
+    #   nil
     end
 
     private

@@ -1,6 +1,6 @@
 class EventCache
-  TRANSACTION_QUEUE_LIMIT = ENV.fetch("TRANSACTION_QUEUE_LIMIT", '5').to_i
-  BLOCK_QUEUE_LIMIT = ENV.fetch("BLOCK_QUEUE_LIMIT", '5').to_i
+  TRANSACTION_QUEUE_LIMIT = ENV.fetch("TRANSACTION_QUEUE_LIMIT", '20').to_i
+  BLOCK_QUEUE_LIMIT = ENV.fetch("BLOCK_QUEUE_LIMIT", '20').to_i
 
   class << self
     def add_transaction(transaction)
@@ -13,11 +13,21 @@ class EventCache
       cache.set("blocks:#{block.hash}", block.to_json, ex: 5.minutes)
     end
 
-    def fetch_list(list)
-      cache.lrange(list, 0, -1)
+    def fetch_transactions(from: 0, to: 5)
+      data = fetch_list("transactions", from:, to:)
+      data.map { |d| Transaction.new(JSON.parse(d)) }
     end
 
-    def all_lists
+    def fetch_blocks(from: 0, to: 5)
+      data = fetch_list("blocks", from:, to:)
+      data.map { |d| Block.new(JSON.parse(d)) }
+    end
+
+    def fetch_list(list, from:, to:)
+      cache.lrange(list, from, to)
+    end
+
+    def all_lists(from: 0, to: 5)
       results = {}
       mutex = Mutex.new
 
@@ -26,7 +36,7 @@ class EventCache
         ["blocks", Block],
       ].map do |list_name, model|
         Thread.new do
-          list_data = fetch_list(list_name)
+          list_data = fetch_list(list_name, from:, to:)
           mutex.synchronize do
             results[list_name] = list_data.map do |data|
               model.new(JSON.parse(data))
@@ -36,6 +46,11 @@ class EventCache
       end.each(&:join)
 
       results
+    end
+
+    def clear
+      cache.ltrim("blocks", 1, 0)
+      cache.ltrim("transactions", 1, 0)
     end
 
     private

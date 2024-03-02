@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
   private
 
     def load_transactions
-      @transactions = EventCache.fetch_list("transactions")
+      @transactions = EventCache.fetch_transactions(from: 0, to: 10)
     end
 
     def load_transaction

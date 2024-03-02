@@ -24,7 +24,7 @@ class Block
       withdrawals: withdrawals,
       baseFeePerGas: baseFeePerGas,
       totalDifficulty: totalDifficulty,
-      size: size
+      size: size,
     }
   end
 
@@ -61,25 +61,13 @@ class Block
   end
 
   def self.from_event(event)
-    from_json(event&.dig("params", "result"))
+    block_data = event&.dig("params", "result")
+    return unless block_data
+    Block.new(**block_data)
   end
-
-  def self.from_json(data)
-    return unless data
-    Block.new(**data)
-  end
-
 
   def seconds_ago
     current_timestamp - self.timestamp
-  end
-
-  def eth_baseFeePerGas
-    self.baseFeePerGas.to_d * 1e-18
-  end
-
-  def gwei_baseFeePerGas
-    self.baseFeePerGas.to_d * 1e-9
   end
 
   private

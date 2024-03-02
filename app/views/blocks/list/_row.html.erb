@@ -1,0 +1,29 @@
+<tr class="transaction border-t border-gray-200 sm:pt-6 dark:border-gray-700">
+  <td class="flex items-center p-2 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
+    <svg class="flex-shrink-0 w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.2 9.8a3.4 3.4 0 0 0-4.8 0L5 13.2A3.4 3.4 0 0 0 9.8 18l.3-.3m-.3-4.5a3.4 3.4 0 0 0 4.8 0L18 9.8A3.4 3.4 0 0 0 13.2 5l-1 1"/>
+      </svg>
+      <div class="ml-3">
+        <p class="font-medium text-gray-900 truncate dark:text-white">
+          <%= link_to block.hash[..10] + "...", show_block_path(block_id: block.hash) %>
+        </p>
+        <div class="flex items-center flex-1 text-sm text-gray-400">
+          <%= block.seconds_ago %> secs ago
+        </div>
+      </div>
+  </td>
+  <td class="p-2 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
+    <div class="ml-3">
+      <p class="font-medium text-gray-900 truncate dark:text-white">
+        Miner
+        <%= link_to left_right_hash(block.miner), show_address_path(address: block.miner) %>
+      </p>
+      <%# <div class="flex items-center flex-1 text-sm text-gray-400">
+        <%= block.transactions.size  txns in 12 secs
+      </div> %>
+    </div>
+  </td>
+  <%# <td class="inline-flex items-center p-2 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+    ... Eth
+  </td> %>
+</tr>

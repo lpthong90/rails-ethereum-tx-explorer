@@ -1,5 +1,48 @@
 <div>
   <div class="grid grid-cols-1 px-4 pt-6 xl:grid-cols-2 xl:px-0 xl:gap-4 dark:bg-gray-900">
-    <%= render partial: "blocks/block_list" %>
-    <%= render partial: "transactions/transaction_list" %>
+    <%= turbo_stream_from "home", channel: HomeChannel, class: "sr-only" %>
+    <div class="p-4 mb-4 space-y-6 bg-white rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+      <div class="px-4 py-2 text-gray-400 border-dashed rounded dark:border-gray-600">
+          <h3>Lastest Blocks</h3>
+      </div>
+      <div>
+        <div class="pt-4" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+          <%= render partial: "blocks/list", locals: { blocks: @blocks } %>
+        </div>
+      </div>
+      <div class="px-4 py-2 text-gray-400 border-dashed rounded dark:border-gray-600">
+          <div class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
+            <div></div>
+            <div class="flex-shrink-0">
+              <a href="<%= blocks_path %>" class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+                View All Blocks
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="p-4 mb-4 space-y-6 bg-white rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+      <div class="px-4 py-2 text-gray-400 border-dashed rounded dark:border-gray-600">
+          <h3>Latest Transactions</h3>
+      </div>
+      <div>
+        <div class="pt-4" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+          <%= render partial: "transactions/list", locals: { transactions: @transactions } %>
+        </div>
+      </div>
+      <div class="px-4 py-2 text-gray-400 border-dashed rounded dark:border-gray-600">
+        <div class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700">
+          <div></div>
+          <div class="flex-shrink-0">
+            <a href="<%= txs_path %>" class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+              View Alls Transactions
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

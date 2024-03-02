@@ -1,18 +1,14 @@
-<div>
-  <h1 class="font-bold text-4xl">Addresses#show</h1>
-  <% if @address %>
-
-    <%= render @address %>
-    <% if @transactions %>
-      <div id="transactions">
-        <% @transactions.each do |transaction| %>
-          <% render transaction%>
+<section class="address bg-white dark:bg-gray-900">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6 lg:px-6">
+      <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <% if @address %>
+          <h3 class="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">
+            Address <span class="font-extrabold"><%= @address.address %></span>
+          </h3>
+          <%= render @address %>
+        <% else %>
+          <h3 class="mb-4 text-2xl tracking-tight font-bold text-gray-900 dark:text-white">Address: Not Found</h3>
         <% end %>
       </div>
-    <% else %>
-      <p>Transactions Not Found</p>
-    <% end %>
-  <% else %>
-    <p>Address Not Found</p>
-  <% end %>
-</div>
+  </div>
+</section>

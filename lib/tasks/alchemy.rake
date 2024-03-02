@@ -4,7 +4,7 @@ require 'alchemy/websocket/transaction'
 require './config/environment'
 
 namespace :alchemy do
-  desc "Starts the WebSocket listener"
+  desc "Starts alchemy websocket listener"
   task listen_ws: :environment do |task, args|
     block_ws, tx_ws = nil, nil
 
@@ -44,5 +44,44 @@ namespace :alchemy do
       sub_type:,
       event:
     ).handle
+  end
+
+  desc "Starts broadcast alchemy event"
+  task broadcast: :environment do |task, args|
+    renderer = ApplicationController.renderer.new
+    # event_data = EventCache.clear
+
+    while true
+      event_data = EventCache.all_lists(from: 0, to: 10)
+
+      # Turbo::StreamsChannel.broadcast_to "home", content: turbo_stream
+      ActionCable.server.broadcast(
+        'home_channel',
+        renderer.render(
+          partial: 'home/update',
+          locals: {
+            blocks: event_data['blocks'][..5],
+            transactions: event_data['transactions'][..5]
+          }
+        )
+      )
+      ActionCable.server.broadcast(
+        'block_channel',
+        renderer.render(
+          partial: 'blocks/table/replace',
+          locals: { blocks: event_data['blocks'] }
+        )
+      )
+      ActionCable.server.broadcast(
+        'transaction_channel',
+        renderer.render(
+          partial: 'transactions/table/replace',
+          locals: { transactions: event_data['transactions'] }
+        )
+      )
+      puts "[Broadcaster] Broadcasted to home channel"
+
+      sleep 3.seconds
+    end
   end
 end
