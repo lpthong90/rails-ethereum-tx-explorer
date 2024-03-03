@@ -38,3 +38,4 @@
 !/app/assets/builds/.keep
 /config/application.yml
 node_modules/
+**/.DS_Store
