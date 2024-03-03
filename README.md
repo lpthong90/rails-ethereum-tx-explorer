@@ -1,7 +1,8 @@
 
 <p align="center">
   <a href="https://lpthong90.dev/rails-ethereum-tx-explorer/">
-    <img src="/assets/images/image_2.png" alt="Rails Ethereum Explorer">
+    <img src="https://lpthong90.dev/rails-ethereum-tx-explorer/assets/images/image_2.png" alt="Rails Ethereum Explorer">
+    
   </a>
   
   <br>
