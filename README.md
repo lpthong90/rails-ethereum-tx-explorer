@@ -27,7 +27,7 @@
 
 # Related Services
 - Redis => Use for caching and websockets
-- [Alchemy](https://www.alchemy.com/) => To get `API_KEY`
+- [Alchemy](https://www.alchemy.com/) => Get `API_KEY` to query blocks, transactions, addresses.
 
 # Environment Variables
 ```
@@ -39,11 +39,29 @@ ALCHEMY_WEBSOCKET_URL: wss://eth-mainnet.g.alchemy.com/v2/<API_KEY>
 
 # Run
 ``` bash
+> bundle install
 > ./bin/dev
 ```
 
 # Screenshots
-<img class="project-thumnail" src="assets/images/screenshots/home.png" alt="Home">
+
+Home page:
+<img src="assets/images/screenshots/home.png" alt="Home">
+
+View recent blocks:
+<img src="assets/images/screenshots/blocks.png" alt="Blocks">
+
+View block by hash or number:
+<img src="assets/images/screenshots/block.png" alt="Block">
+
+View recent transactions:
+<img src="assets/images/screenshots/transactions.png" alt="Transactions">
+
+View transaction by hash:
+<img src="assets/images/screenshots/transaction.png" alt="Transaction">
+
+View address by hash:
+<img src="assets/images/screenshots/address.png" alt="Address">
 
 # Video demo:
 
