@@ -9,6 +9,8 @@ class Transaction
                 :input, :nonce, :r, :s, :transactionIndex, :type, :v, :value,
                 :accessList, :chainId, :maxFeePerGas, :maxPriorityFeePerGas, :yParity
 
+  HASH_FORMAT_REGEX = /0x[a-fA-F0-9]{64}/
+
   def attributes
     {hash: hash, from: from, to: to, value: value, blockNumber: blockNumber, gas: gas, gasPrice: gasPrice}
     # instance_values
@@ -18,7 +20,7 @@ class Transaction
   # :blockHash, :blockNumber, :hash, :from, :gas, :gasPrice, :input, :nonce, 
   #           :r, :s, :to, :transactionIndex, :type, :v, :value, presence: true
 
-  validates_format_of :hash, with: /0x[a-fA-F0-9]{64}/
+  validates_format_of :hash, with: HASH_FORMAT_REGEX
   # validates_format_of :from, :to, with: /0x[a-fA-F0-9]{40}/
   # validates_format_of :blockHash, with: /0x[a-fA-F0-9]{64}/
 

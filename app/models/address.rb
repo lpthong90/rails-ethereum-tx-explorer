@@ -5,8 +5,10 @@ class Address
 
   attr_accessor :address, :balance
 
+  FORMAT_REGEX = /0x[a-fA-F0-9]{40}/
+
   validates :address, presence: true
-  validates_format_of :address, with: /0x[a-fA-F0-9]{40}/
+  validates_format_of :address, with: FORMAT_REGEX
 
   def balance=(value)
     @balance = value.to_i(16) rescue 0

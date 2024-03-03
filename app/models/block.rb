@@ -11,7 +11,9 @@ class Block
                 :logsBloom, :miner, :mixHash, :nonce, :number, :parentHash, :receiptsRoot,
                 :sha3Uncles, :size, :stateRoot, :timestamp, :transactionsRoot, :withdrawals, 
                 :withdrawalsRoot, :transactions, :totalDifficulty, :uncles
-  
+
+  NUMBER_FORMAT_REGEX = /-?\d+/
+
   validates :hash, presence: true
 
   def attributes

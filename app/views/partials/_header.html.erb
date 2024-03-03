@@ -2,10 +2,10 @@
   <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <a href="<%= root_path %>" class="flex items-center">
-              <img src="https://etherscan.io/images/svg/brands/ethereum-original.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+              <img src="/assets/ethereum-original.svg" class="mr-3 h-6 sm:h-9" alt="Ethereum Origin" />
               <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Ethereum Explorer</span>
           </a>
-          <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
+          <%# <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
             <label for="topbar-search" class="sr-only">Search</label>
             <div class="relative mt-1 lg:w-96">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -13,7 +13,8 @@
               </div>
               <input type="text" name="email" id="topbar-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search">
             </div>
-          </form>
+          </form> %>
+          <%= render partial: "search/form" %>
           <%# <div class="flex items-center lg:order-2">
               <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
               <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Get started</a>

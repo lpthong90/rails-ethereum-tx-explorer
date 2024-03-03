@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   get 'home/index', to: "home#index", as: "home"
+  get 'search', to: "search#index", as: "search"
 
   get 'blocks', to: "blocks#index", as: "blocks"
   get 'block/:block_id', to: "blocks#show", as: "show_block"
