@@ -1,24 +1,19 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p align="center">
+  <em>Using Ruby on Rails to demo a simple version of <a href="https://etherscan.io/" target="_blank">Etherscan</a>.</em>
+</p>
+<!--more-->
 
-Things you may want to cover:
+---
 
-* Ruby version
+**Documentation**: <a href="https://lpthong90.dev/rails-ethereum-tx-explorer" target="_blank">https://lpthong90.dev/rails-ethereum-tx-explorer</a>
 
-* System dependencies
+**Source  Code**: <a href="https://github.com/lpthong90/rails-ethereum-tx-explorer" target="_blank">https://github.com/lpthong90/rails-ethereum-tx-explorer</a>
 
-* Configuration
+---
 
-* Database creation
+Video demo:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<p align="center">
+    <iframe width="800" height="450" src="https://www.youtube.com/embed/si-zVREI_jw?si=9hBeEZqzt74KSXV9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
