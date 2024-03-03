@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="https://lpthong90.dev/rails-ethereum-tx-explorer/">
-    <img class="project-thumnail" src="/assets/images/image_2.png" alt="Rails Ethereum Explorer">
+    <img src="/assets/images/image_2.png" alt="Rails Ethereum Explorer">
   </a>
   
   <br>
@@ -41,6 +41,9 @@ ALCHEMY_WEBSOCKET_URL: wss://eth-mainnet.g.alchemy.com/v2/<API_KEY>
 ``` bash
 > ./bin/dev
 ```
+
+# Screenshots
+<img class="project-thumnail" src="assets/images/screenshots/home.png" alt="Home">
 
 # Video demo:
 
