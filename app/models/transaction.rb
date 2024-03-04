@@ -2,24 +2,24 @@ class Transaction < ApplicationModel
   attribute :hash, :string
   attribute :from, :string
   attribute :to, :string
-  attribute :blockHash, :string
-  attribute :blockNumber, :hex_integer
+  attribute :block_hash, :string
+  attribute :block_number, :hex_integer
   attribute :gas, :hex_integer
-  attribute :gasPrice, :hex_integer
+  attribute :gas_price, :hex_integer
   attribute :input, :hex_integer
   attribute :nonce, :hex_integer
   attribute :r, :string
   attribute :s, :string
-  attribute :transactionIndex, :hex_integer
+  attribute :transaction_index, :hex_integer
   attribute :type, :hex_integer
   attribute :v, :hex_integer
   attribute :value, :hex_integer
-  attribute :chainId, :hex_integer
-  attribute :maxFeePerGas, :hex_integer
-  attribute :maxPriorityFeePerGas, :hex_integer
-  attribute :yParity, :hex_integer
+  attribute :chain_id, :hex_integer
+  attribute :max_fee_per_gas, :hex_integer
+  attribute :max_priority_fee_per_gas, :hex_integer
+  attribute :y_parity, :hex_integer
 
-  attr_accessor :accessList
+  attr_accessor :access_list
 
   HASH_FORMAT_REGEX = /0x[a-fA-F0-9]{64}/
 
@@ -34,7 +34,7 @@ class Transaction < ApplicationModel
   end
 
   def fee
-    self.gas * self.gasPrice
+    self.gas * self.gas_price
   end
 
   def eth_fee

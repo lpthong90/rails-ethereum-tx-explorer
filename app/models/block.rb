@@ -1,24 +1,24 @@
 class Block < ApplicationModel
-  attribute :baseFeePerGas, :hex_integer
+  attribute :base_fee_per_gas, :hex_integer
   attribute :difficulty, :hex_integer
-  attribute :extraData, :string
-  attribute :gasLimit, :hex_integer
-  attribute :gasUsed, :hex_integer
+  attribute :extra_data, :string
+  attribute :gas_limit, :hex_integer
+  attribute :gas_used, :hex_integer
   attribute :hash, :string
-  attribute :logsBloom, :string
+  attribute :logs_bloom, :string
   attribute :miner, :string
-  attribute :mixHash, :string
+  attribute :mix_hash, :string
   attribute :nonce, :hex_integer
   attribute :number, :hex_integer
-  attribute :parentHash, :string
-  attribute :receiptsRoot, :string
-  attribute :sha3Uncles, :string
+  attribute :parent_hash, :string
+  attribute :receipts_root, :string
+  attribute :sha3_uncles, :string
   attribute :size, :hex_integer
-  attribute :stateRoot, :string
+  attribute :state_root, :string
   attribute :timestamp, :hex_integer
-  attribute :transactionsRoot, :string
-  attribute :withdrawalsRoot, :string
-  attribute :totalDifficulty, :hex_integer
+  attribute :transactions_root, :string
+  attribute :withdrawals_root, :string
+  attribute :total_difficulty, :hex_integer
 
   attr_accessor :withdrawals, :transactions, :uncles
 
@@ -38,12 +38,12 @@ class Block < ApplicationModel
     current_timestamp - self.timestamp
   end
 
-  def eth_baseFeePerGas
-    self.baseFeePerGas.to_d * 1e-18
+  def eth_base_fee_per_gas
+    self.base_fee_per_gas.to_d * 1e-18
   end
 
-  def gwei_baseFeePerGas
-    self.baseFeePerGas.to_d * 1e-9
+  def gwei_base_fee_per_gas
+    self.base_fee_per_gas.to_d * 1e-9
   end
 
   def broadcast_to_channel

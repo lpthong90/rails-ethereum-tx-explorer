@@ -3,7 +3,7 @@
     <%= link_to right_hash(transaction.hash) + '...', show_tx_path(transaction.hash) %>
   </td>
   <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-    <%= link_to transaction.blockNumber, show_block_path(block_id: transaction.blockNumber) %>
+    <%= link_to transaction.block_number, show_block_path(block_id: transaction.block_number) %>
   </td>
   <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
     <%= link_to left_right_hash(transaction.from), show_address_path(transaction.from) %>

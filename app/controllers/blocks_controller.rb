@@ -21,14 +21,14 @@ class BlocksController < ApplicationController
         else 
           web3.get_block_by_number(params[:block_id].to_i, include_txs: true)
         end
-        Block.from_json(data)
+        Block.new(data)
       rescue
         nil
       end
     end
 
     def load_transactions
-      @transactions = @block.transactions.map { Transaction.from_json(_1) }
+      @transactions = @block.transactions.map { Transaction.new(_1) }
     rescue
       @transactions = []
     end

@@ -15,10 +15,10 @@ class AddressesController < ApplicationController
 
     def load_address
       @address = begin
-        taddress = Address.new(
-          address: params[:address]
-        )
-        taddress.balance = @address_balance
+        taddress = Address.new({
+          address: params[:address],
+          balance: @address_balance
+        })
         taddress if taddress.validate
       end
     end
