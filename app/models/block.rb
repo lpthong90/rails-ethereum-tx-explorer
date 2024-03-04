@@ -1,76 +1,38 @@
-class Block
-  include ActiveModel::API
-  include ActiveModel::Validations
-  include ActiveModel::Serializers::JSON
+class Block < ApplicationModel
+  attribute :baseFeePerGas, :hex_integer
+  attribute :difficulty, :hex_integer
+  attribute :extraData, :string
+  attribute :gasLimit, :hex_integer
+  attribute :gasUsed, :hex_integer
+  attribute :hash, :string
+  attribute :logsBloom, :string
+  attribute :miner, :string
+  attribute :mixHash, :string
+  attribute :nonce, :hex_integer
+  attribute :number, :hex_integer
+  attribute :parentHash, :string
+  attribute :receiptsRoot, :string
+  attribute :sha3Uncles, :string
+  attribute :size, :hex_integer
+  attribute :stateRoot, :string
+  attribute :timestamp, :hex_integer
+  attribute :transactionsRoot, :string
+  attribute :withdrawalsRoot, :string
+  attribute :totalDifficulty, :hex_integer
 
-  include Turbo::Broadcastable
-
-  include StringConcern
-
-  attr_accessor :baseFeePerGas, :difficulty, :extraData, :gasLimit, :gasUsed, :hash,
-                :logsBloom, :miner, :mixHash, :nonce, :number, :parentHash, :receiptsRoot,
-                :sha3Uncles, :size, :stateRoot, :timestamp, :transactionsRoot, :withdrawals, 
-                :withdrawalsRoot, :transactions, :totalDifficulty, :uncles
+  attr_accessor :withdrawals, :transactions, :uncles
 
   NUMBER_FORMAT_REGEX = /-?\d+/
 
   validates :hash, presence: true
 
-  def attributes
-    {
-      hash: hash,
-      number: number,
-      timestamp: timestamp,
-      miner: miner,
-      transactions: transactions,
-      withdrawals: withdrawals,
-      baseFeePerGas: baseFeePerGas,
-      totalDifficulty: totalDifficulty,
-      size: size
-    }
-  end
-
-  def totalDifficulty=(value)
-    @totalDifficulty = value.class == Integer ? value : value.to_i(16) rescue nil
-  end
-
-  def size=(value)
-    @size = value.class == Integer ? value : value.to_i(16)
-  end
-
-  def number=(value)
-    @number = value.class == Integer ? value : value.to_i(16)
-  end
-
-  def baseFeePerGas=(value)
-    @baseFeePerGas = value.class == Integer ? value : value.to_i(16)
+  def transactions=(value)
+    @transactions = value ? value : []
   end
 
   def datetime
     Time.at(self.timestamp)
   end
-
-  def timestamp=(value)
-    @timestamp = value.class == Integer ? value : value.to_i(16)
-  end
-
-  def transactions=(value)
-    @transactions = value ? value : []
-  end
-
-  def broadcast_to_channel
-    ActionCable.server.broadcast('block_channel', { block: self })
-  end
-
-  def self.from_event(event)
-    from_json(event&.dig("params", "result"))
-  end
-
-  def self.from_json(data)
-    return unless data
-    Block.new(**data)
-  end
-
 
   def seconds_ago
     current_timestamp - self.timestamp
@@ -82,6 +44,10 @@ class Block
 
   def gwei_baseFeePerGas
     self.baseFeePerGas.to_d * 1e-9
+  end
+
+  def broadcast_to_channel
+    ActionCable.server.broadcast('block_channel', { block: self })
   end
 
   private

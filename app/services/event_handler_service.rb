@@ -23,7 +23,8 @@ class EventHandlerService
 
     def handle_mined_transaction_event
       # ActionCable.server.broadcast('transaction_channel', msg.data)
-      transaction = Transaction.from_event(event)
+      data = event&.dig("params", "result", "transaction")
+      transaction = Transaction.from_json(data)
       if transaction.valid?
         EventCache.add_transaction(transaction)
         puts "=> cached tx: #{transaction.hash}"
@@ -33,7 +34,8 @@ class EventHandlerService
     end
 
     def handle_new_block_event
-      block = Block.from_event(event)
+      data = event&.dig("params", "result")
+      block = Block.from_json(data)
       if block.valid?
         EventCache.add_block(block)
         puts "=> cached block: #{block.hash}"

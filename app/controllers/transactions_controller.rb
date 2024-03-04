@@ -17,7 +17,7 @@ class TransactionsController < ApplicationController
     def load_transaction
       @transaction = begin
         data = web3.get_transaction_by_hash(params[:hash])
-        Transaction.new.from_json(data.to_json)
+        Transaction.from_json(data)
       rescue
         nil
       end

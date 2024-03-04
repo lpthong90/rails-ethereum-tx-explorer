@@ -7,12 +7,8 @@ class ApplicationModel
 
   include Turbo::Broadcastable
 
-  # include NormalizationConcern
-  include MyNormalizationConcern
-  include StringConcern
-
   def attributes
-    instance_values
+    instance_values["attributes"]
   end
 
   def attributes=(hash)
@@ -20,5 +16,10 @@ class ApplicationModel
       new_key = camel_to_snake(key)
       send("#{new_key}=", value)
     end
+  end
+
+  def self.from_json(data)
+    return unless data
+    self.new(**data)
   end
 end

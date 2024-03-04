@@ -22,8 +22,8 @@ class BlocksController < ApplicationController
           web3.get_block_by_number(params[:block_id].to_i, include_txs: true)
         end
         Block.from_json(data)
-      # rescue
-      #   nil
+      rescue
+        nil
       end
     end
 
